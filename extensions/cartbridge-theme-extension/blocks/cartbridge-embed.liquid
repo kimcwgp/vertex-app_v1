@@ -1,0 +1,23 @@
+{% if customer %}
+  <script>
+    window.customerData = {
+      id: "{{ customer.id }}",
+      email: "{{ customer.email }}",
+      tags: {{ customer.tags | json }}
+    };
+  </script>
+{% endif %}
+
+<script>
+  window.GOOGLE_URL = "{{ shop.metafields.cartbridge.spreadsheet_url.value }}";
+</script>
+
+<script src="{{ 'abandoned-cart-tracking.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "CartBridge Sync App",
+  "target": "body",
+  "settings": []
+}
+{% endschema %}
