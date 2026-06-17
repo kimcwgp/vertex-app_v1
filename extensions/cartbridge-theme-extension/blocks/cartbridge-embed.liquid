@@ -3,6 +3,7 @@
     window.customerData = {
       id: "{{ customer.id }}",
       email: "{{ customer.email }}",
+      phone: {{ customer.phone | json }},
       tags: {{ customer.tags | json }}
     };
   </script>
