@@ -48,6 +48,7 @@
         const payload = {
           customerId: window.customerData.id,
           customerEmail: window.customerData.email,
+          customerPhone: window.customerData.phone || null,
           customerTags: Array.isArray(window.customerData.tags) ? window.customerData.tags : [],
           dedupeKey: sig, // <-- send to sheet for optional server-side dedupe
           reason, // why this fired (debug)
