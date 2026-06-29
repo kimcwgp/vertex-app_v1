@@ -75,7 +75,7 @@ export default function PlansPage() {
 
   return (
     <AppProvider i18n={enTranslations}>
-      <s-page heading="CartBridge Sync">
+      <s-page heading="Vertex: Abandoned Cart Sync">
         <Text variant="headingLg" as="h2">
           Monthly Payment Plans
         </Text>
@@ -229,7 +229,7 @@ export default function PlansPage() {
         {/* Cancel subscription Section */}
         <div class="cancel-subscription-card">
           <p class="cancel-subscription-heading">
-            Do you want to cancel your CartBridge subscription?
+            Do you want to cancel your Vertex: Abandoned Cart subscription?
           </p>
           <p class="cancel-subscription-description">
             Canceling your subscription will stop all your setup and data
@@ -242,7 +242,7 @@ export default function PlansPage() {
 
         {/* Cancel subscription Section */}
         <div class="app-footer">
-          <p>The CartBridge Sync app by CW Global Partners. <a href="#">Privacy Policy</a> | <a href="#">Terms of Conditions</a></p>
+          <p>The Vertex: Abandoned Cart app by CW Global Partners. <a href="#">Privacy Policy</a> | <a href="#">Terms of Conditions</a></p>
         </div>
 
       </s-page>

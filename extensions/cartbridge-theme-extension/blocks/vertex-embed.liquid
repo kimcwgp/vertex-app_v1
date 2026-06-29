@@ -10,14 +10,14 @@
 {% endif %}
 
 <script>
-  window.GOOGLE_URL = "{{ shop.metafields.cartbridge.spreadsheet_url.value }}";
+  window.GOOGLE_URL = "{{ shop.metafields.vertex.spreadsheet_url.value }}";
 </script>
 
 <script src="{{ 'abandoned-cart-tracking.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
-  "name": "CartBridge Sync App",
+  "name": "Vertex: Abandoned Cart",
   "target": "body",
   "settings": []
 }

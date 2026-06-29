@@ -37,7 +37,7 @@ export const action = async ({ request }) => {
     const result = await admin.graphql(`
       mutation {
         metafieldsSet(metafields: [{
-          namespace: "cartbridge",
+          namespace: "vertex",
           key: "spreadsheet_url",
           value: ${JSON.stringify(spreadsheetUrl)},
           type: "single_line_text_field",
@@ -97,14 +97,14 @@ export const loader = async ({ request }) => {
     const blocks = settingsData?.current?.blocks || {};
     isAppEmbedActive = Object.values(blocks).some(
       (block) =>
-        block.type?.includes("cartbridge-embed") && block.disabled !== true
+        block.type?.includes("vertex-embed") && block.disabled !== true
     );
   }
 
   const metafieldResponse = await admin.graphql(`
     query {
       shop {
-        metafield(namespace: "cartbridge", key: "spreadsheet_url") {
+        metafield(namespace: "vertex", key: "spreadsheet_url") {
           value
         }
       }
@@ -153,6 +153,15 @@ export default function Index() {
     inactivity: true,
   });
 
+  const features = [
+    "Customer Activity Monitoring",
+    "Abandoned Cart Tracking",
+    "Abandoned Checkout Monitoring",
+    "Google Sheet Sync",
+    "Customer Data Management",
+    "NetSuite Integration Support",
+  ];
+
   // Show toast when action completes
   useEffect(() => {
     if (actionData) {
@@ -179,7 +188,7 @@ export default function Index() {
     <AppProvider i18n={enTranslations}>
       <Frame>
         {toastMarkup}
-        <s-page heading="CartBridge Sync" inline-size="base">
+        <s-page heading="Vertex: Abandoned Cart" inline-size="base">
           <Layout>
             <Layout.Section>
               <BlockStack gap="400">
@@ -199,7 +208,7 @@ export default function Index() {
                     </InlineStack>
 
                     <Text as="p" tone="subdued">
-                      CartBridge theme app embed is not enabled on your published theme.
+                      Vertex: Abandoned Cart theme app embed is not enabled on your published theme.
                     </Text>
 
                     <InlineStack>
@@ -214,7 +223,7 @@ export default function Index() {
                 <Card>
                   <BlockStack gap="400">
                     <Text variant="headingSm" as="h2">
-                      Welcome to CartBridge Sync! Here's how to get you started
+                      Welcome to Vertex: Abandoned Cart! Here's how to get you started
                     </Text>
 
                     <List type="bullet">
@@ -274,17 +283,16 @@ export default function Index() {
                 </Card>
 
                 {/* Settings Section */}
-                <Card>
-                  <InlineGrid columns={{ xs: 1, md: 2 }} gap="400">
-
+                {/* <Card>
+                  <InlineGrid columns={{ xs: 1, md: 2 }} gap="400"> */}
+                    
                     {/* LEFT PANEL */}
-                    <Card>
+                    {/* <Card>
                       <div
                         style={{
                           position: "relative",
                         }}
                       >
-                        {/* Overlay */}
                         <div
                           style={{
                             position: "absolute",
@@ -300,7 +308,6 @@ export default function Index() {
                           </Button>
                         </div>
 
-                        {/* Disabled Content */}
                         <div
                           style={{
                             opacity: 0.4,
@@ -314,7 +321,6 @@ export default function Index() {
                             </Text>
 
                             <InlineGrid columns={{ xs: 1, md: 2 }} gap="400">
-                              {/* Status Column */}
                               <BlockStack gap="300">
                                 <Text as="h3" variant="bodyMd" fontWeight="medium">
                                   Personalize Status
@@ -343,7 +349,6 @@ export default function Index() {
                                 </Button>
                               </BlockStack>
 
-                              {/* Timer Column */}
                               <BlockStack gap="300">
                                 <Text as="h3" variant="bodyMd" fontWeight="medium">
                                   Personalize Timer & Status
@@ -371,10 +376,10 @@ export default function Index() {
                           </BlockStack>
                         </div>
                       </div>
-                    </Card>
+                    </Card> */}
 
                     {/* RIGHT PANEL */}
-                    <Card>
+                    {/* <Card>
                       <BlockStack gap="300">
                         <Text as="h2" variant="headingMd">
                           Default
@@ -437,11 +442,220 @@ export default function Index() {
                     </Card>
 
                   </InlineGrid>
+                </Card> */}
+
+                {/* Features Marquee */}
+                <Card padding="0">
+                  <div className="feature-marquee">
+                    <div className="feature-track">
+                      {[...features, ...features].map((feature, index) => (
+                        <div className="feature-item" key={index}>
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Setup Guide Section */}
+                <Card>
+                  <InlineGrid columns={{ xs: 1, md: 3}} gap="400">
+
+                    {/* Step 1 */}
+                    <div style={{ maxWidth: "420px", height: "100%" }}>
+                      <Card padding="0">
+                        {/* GIF/Image */}
+                        <div
+                          style={{
+                            height: "320px",
+                            background: "#e5e5e5",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            overflow: "hidden",
+                            borderTopLeftRadius: "12px",
+                            borderTopRightRadius: "12px",
+                          }}
+                        >
+                          <img
+                            src="/images/shopify.gif"
+                            alt="Step 1 Gif"
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </div>
+
+                        {/* Description */}
+                        <Box style={{
+                            padding: "16px",
+                            minHeight: "250px",
+                            display: "flex",
+                            flexDirection: "column",
+                          }}>
+                          <BlockStack gap="400">
+                            <Text variant="headingMd" as="h2">
+                              Step 1 – Create your masterfile
+                            </Text>
+
+                            <Text as="p" variant="bodyMd">
+                              Click the <strong>Create Masterfile</strong> button to make a
+                              copy of the template.
+                            </Text>
+
+                            <Text as="p" variant="bodyMd" tone="subdued">
+                              Important: Make sure you are logged in to the Google account where
+                              you want to permanently store and manage your Masterfile.
+                            </Text>
+
+                            <div style={{ display: "flex", justifyContent: "center" }}>
+                              <Button
+                                variant="primary"
+                                url="https://docs.google.com/spreadsheets/d/1mf87JXANh1wmIy1fkY44-BAflCOrXMOIOsCXPMdt8gs/copy"
+                                target="_blank"
+                              >
+                                Create Masterfile
+                              </Button>
+                            </div>
+                          </BlockStack>
+                        </Box>
+                      </Card>
+                    </div>
+                    
+                    {/* Step 2 */}
+                    <div style={{ maxWidth: "420px", height: "100%" }}>
+                      <Card padding="0">
+                        {/* GIF/Image */}
+                        <div
+                          style={{
+                            height: "320px",
+                            background: "#e5e5e5",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            overflow: "hidden",
+                            borderTopLeftRadius: "12px",
+                            borderTopRightRadius: "12px",
+                          }}
+                        >
+                          <img
+                            src="/images/shopify.gif"
+                            alt="Step 2 Gif"
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </div>
+
+                        {/* Description */}
+                        <Box style={{
+                            padding: "16px",
+                            minHeight: "250px",
+                            display: "flex",
+                            flexDirection: "column",
+                          }}>
+                          <BlockStack gap="400">
+                            <Text variant="headingMd" as="h2">
+                              Step 2 – Deploy the apps script
+                            </Text>
+
+                            <ol
+                              style={{
+                                margin: 0,
+                                paddingLeft: "22px",
+                                lineHeight: "1.5",
+                              }}
+                            >
+                              <li>Click <strong>Deploy → New Deployment</strong>.</li>
+                              <li>Select <strong>Web App</strong>.</li>
+                              <li>
+                                Configure the deployment:
+                                <ul
+                                  style={{
+                                    paddingLeft: "22px",
+                                  }}
+                                >
+                                  <li>Execute as: <strong>Me</strong></li>
+                                  <li>Who has access: <strong>Anyone</strong></li>
+                                </ul>
+                              </li>
+                              <li>
+                                Click <strong>Deploy</strong> and complete the authorization if
+                                prompted.
+                              </li>
+                            </ol>
+
+                          </BlockStack>
+                        </Box>
+                      </Card>
+                    </div>
+
+                    {/* Step 3 */}
+                    <div style={{ maxWidth: "420px", height: "100%" }}>
+                      <Card padding="0">
+                        {/* GIF/Image */}
+                        <div
+                          style={{
+                            height: "320px",
+                            background: "#e5e5e5",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            overflow: "hidden",
+                            borderTopLeftRadius: "12px",
+                            borderTopRightRadius: "12px",
+                          }}
+                        >
+                          <img
+                            src="/images/shopify.gif"
+                            alt="Step 3 Gif"
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </div>
+
+                        {/* Description */}
+                        <Box style={{
+                            padding: "16px",
+                            minHeight: "250px",
+                            display: "flex",
+                            flexDirection: "column",
+                          }}>
+                          <BlockStack gap="400">
+                            <Text variant="headingMd" as="h2">
+                              Step 3 - Integration
+                            </Text>
+
+                            <ol
+                              style={{
+                                margin: 0,
+                                paddingLeft: "22px",
+                                lineHeight: "1.5",
+                              }}
+                            >
+                              <li>From Apps Script <strong>Deploy → Manage Deployments</strong>.</li>
+                              <li>Copy the generated Web App URL.</li>
+                              <li>Paste the URL into the <strong>Web API URL field</strong> at the top of the spreadsheet, then click <strong>Save</strong>.</li>
+                            </ol>
+
+                          </BlockStack>
+                        </Box>
+                      </Card>
+                    </div>
+
+                  </InlineGrid>
                 </Card>
 
                 {/* Cancel subscription Section */}
                 <div class="app-footer">
-                  <p>The CartBridge Sync app by CW Global Partners. <a href="#">Privacy Policy</a> | <a href="#">Terms of Conditions</a></p>
+                  <p>The Vertex: Abandoned Cart app by CW Global Partners. <a href="#">Privacy Policy</a> | <a href="#">Terms of Conditions</a></p>
                 </div>
 
               </BlockStack>

@@ -12,3 +12,48 @@
 .app-footer p {
   font-size: 10px;
 }
+
+.feature-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #000000;
+  color: #fff;
+  padding: 18px 0;
+  white-space: nowrap;
+  border-radius: 12px;
+}
+
+.feature-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-right: 48px;
+}
+
+.feature-item::after {
+  margin-left: 48px;
+  font-size: 22px;
+  opacity: 0.7;
+}
+
+.feature-marquee:hover .feature-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

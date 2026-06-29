@@ -4,7 +4,7 @@
     const GOOGLE_URL = window.GOOGLE_URL || '';
 
     if (!GOOGLE_URL) {
-      console.warn("CartBridge: No spreadsheet URL configured.");
+      console.warn("Vertex: Abandoned Cart: No spreadsheet URL configured.");
     }
 
       

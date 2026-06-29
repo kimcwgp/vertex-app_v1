@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "392a4aad080bd6cd39027e5a52e410be"
-name = "CartBridge Sync"
+client_id = "d805448d2e512e12471a0726402bafd5"
+name = "Vertex: Abandoned Cart"
 application_url = "https://example.com"
 embedded = true
 
