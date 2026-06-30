@@ -2,12 +2,11 @@
 
 client_id = "d805448d2e512e12471a0726402bafd5"
 name = "Vertex: Abandoned Cart"
-application_url = "https://example.com"
+application_url = "https://cartbridge.cwglobal.ai"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
-include_config_on_deploy = true
 
 [webhooks]
 api_version = "2026-07"
@@ -17,4 +16,9 @@ api_version = "2026-07"
 scopes = "read_themes,write_metaobject_definitions,write_metaobjects,write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ 
+    "https://cartbridge.cwglobal.ai/auth/callback",
+    "https://cartbridge.cwglobal.ai/auth/shopify/callback",
+    "https://cartbridge.cwglobal.ai/api/auth/callback",
+    "https://cartbridge.cwglobal.ai/api/auth"
+]

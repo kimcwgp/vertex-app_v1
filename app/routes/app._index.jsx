@@ -236,9 +236,9 @@ export default function Index() {
                       Need help? Contact support anytime -- we're happy to assist.
                     </Text>
 
-                    <Box>
+                    {/* <Box>
                       <Button>Read setup guide</Button>
-                    </Box>
+                    </Box> */}
                   </BlockStack>
                 </Card>
 
@@ -265,7 +265,7 @@ export default function Index() {
                 </Card>
 
                 {/* Tutorial Videos */}
-                <Card>
+                {/* <Card>
                     <MediaCard
                     title="Lorem ipsum"
                       primaryAction={{
@@ -280,7 +280,7 @@ export default function Index() {
                           onClick={() => console.log('clicked')}
                         />
                     </MediaCard>
-                </Card>
+                </Card> */}
 
                 {/* Settings Section */}
                 {/* <Card>
@@ -444,8 +444,21 @@ export default function Index() {
                   </InlineGrid>
                 </Card> */}
 
+                {/* App Features Banner */}
+                <Card>
+                  <img
+                            src="/images/features-banner.png"
+                            alt="Step 1 Gif"
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                </Card>
+
                 {/* Features Marquee */}
-                <Card padding="0">
+                {/* <Card padding="0">
                   <div className="feature-marquee">
                     <div className="feature-track">
                       {[...features, ...features].map((feature, index) => (
@@ -455,7 +468,7 @@ export default function Index() {
                       ))}
                     </div>
                   </div>
-                </Card>
+                </Card> */}
 
                 {/* Setup Guide Section */}
                 <Card>
@@ -478,7 +491,7 @@ export default function Index() {
                           }}
                         >
                           <img
-                            src="/images/shopify.gif"
+                            src="/images/shopify-step1.gif"
                             alt="Step 1 Gif"
                             style={{
                               width: "100%",
@@ -541,7 +554,7 @@ export default function Index() {
                           }}
                         >
                           <img
-                            src="/images/shopify.gif"
+                            src="/images/shopify-step2.gif"
                             alt="Step 2 Gif"
                             style={{
                               width: "100%",
@@ -570,6 +583,7 @@ export default function Index() {
                                 lineHeight: "1.5",
                               }}
                             >
+                              <li>Click <strong>Extensions → App Script</strong>.</li>
                               <li>Click <strong>Deploy → New Deployment</strong>.</li>
                               <li>Select <strong>Web App</strong>.</li>
                               <li>
@@ -611,7 +625,7 @@ export default function Index() {
                           }}
                         >
                           <img
-                            src="/images/shopify.gif"
+                            src="/images/shopify-step3.gif"
                             alt="Step 3 Gif"
                             style={{
                               width: "100%",
