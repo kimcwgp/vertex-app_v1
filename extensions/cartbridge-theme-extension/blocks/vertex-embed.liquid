@@ -1,14 +1,17 @@
 {% if customer %}
-  <script>
-window.customerData = {
-  id: {{ customer.id | json }},
-  email: {{ customer.email | json }},
-  phone: {{ customer.phone | json }},
-  tags: {{ customer.tags | json }},
+<script>
+  // Expose logged-in customer to JS
+  window.customerData = {
+    id: {{ customer.id | json }},
+    email: {{ customer.email | json }},
+    phone: {{ customer.phone | json }},
   companyName: {% if customer.current_company %}{{ customer.current_company.name | json }}{% else %}null{% endif %},
-  companyId: {% if customer.current_company %}{{ customer.current_company.id | json }}{% else %}null{% endif %}
-};
-  </script>
+  companyId: {% if customer.current_company %}{{ customer.current_company.id | json }}{% else %}null{% endif %},
+    // 'customer.tags' as an array for easy handling
+    tags: {{ customer.tags | json }}
+  };
+  console.log("customerData:", window.customerData); // should show id/email/tags
+</script>
 {% endif %}
 
 <script>
