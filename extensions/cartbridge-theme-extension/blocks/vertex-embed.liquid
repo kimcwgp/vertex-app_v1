@@ -1,14 +1,13 @@
 {% if customer %}
   <script>
-    window.customerData = {
-      id: {{ customer.id | json }},
-      email: {{ customer.email | json }},
-      phone: {{ customer.phone | json }},
-    // 'customer.tags' as an array for easy handling
-      tags: {{ customer.tags | json }},
-      companyName: {{ customer.current_company.name | json }},
-      companyId: {{ customer.current_company.id | json }}
-    };
+window.customerData = {
+  id: {{ customer.id | json }},
+  email: {{ customer.email | json }},
+  phone: {{ customer.phone | json }},
+  tags: {{ customer.tags | json }},
+  companyName: {% if customer.current_company %}{{ customer.current_company.name | json }}{% else %}null{% endif %},
+  companyId: {% if customer.current_company %}{{ customer.current_company.id | json }}{% else %}null{% endif %}
+};
   </script>
 {% endif %}
 
