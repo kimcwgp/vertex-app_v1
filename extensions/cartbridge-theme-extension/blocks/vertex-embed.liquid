@@ -1,9 +1,10 @@
 {% if customer %}
   <script>
     window.customerData = {
-      id: "{{ customer.id }}",
-      email: "{{ customer.email }}",
+      id: {{ customer.id | json }},
+      email: {{ customer.email | json }},
       phone: {{ customer.phone | json }},
+    // 'customer.tags' as an array for easy handling
       tags: {{ customer.tags | json }}
     };
   </script>
